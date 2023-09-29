@@ -2,6 +2,8 @@
 #ifndef TRIPLE_H
 #define TRIPLE_H
 
+#include <concepts>
+
 template <class T>
 concept isIntegral = std::is_integral_v<T>;
 
