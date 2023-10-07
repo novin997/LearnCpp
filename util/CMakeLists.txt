@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(tripleLib VERSION 1.0.0 LANGUAGES CXX)
+project(utilLib VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/triple.hpp")
+set(HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/triple.hpp" "${CMAKE_CURRENT_SOURCE_DIR}/include/compare.hpp")
 
-add_library(triple INTERFACE ${HEADER_FILES})
+add_library(util INTERFACE ${HEADER_FILES})
 
-target_include_directories(triple INTERFACE 
+target_include_directories(util INTERFACE 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>  
     $<INSTALL_INTERFACE:include>  # <prefix>/include/mylib
 )
 
-# target_include_directories(triple INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+# target_include_directories(util INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 include(GNUInstallDirs)
 
@@ -24,7 +24,7 @@ include(GNUInstallDirs)
 # )
 
 install(
-    TARGETS triple EXPORT tripleLibConfig
+    TARGETS util EXPORT utilLibConfig
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -32,6 +32,6 @@ install(
 
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-install(EXPORT tripleLibConfig DESTINATION share/MyLib/cmake)
+install(EXPORT utilLibConfig DESTINATION share/MyLib/cmake)
 
-export(TARGETS triple FILE tripleLibConfig.cmake)
+export(TARGETS util FILE utilLibConfig.cmake)
