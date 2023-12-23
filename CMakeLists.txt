@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD 20)
 list(APPEND CMAKE_MODULE_PATH "/usr/local/share/MyLib/cmake")
 
 find_package(utilLib REQUIRED)
-# add_subdirectory(util)
+add_subdirectory(coroutine)
 
 add_executable(LearnCpp src/main.cpp)
 
-target_link_libraries(LearnCpp PUBLIC util)
+target_link_libraries(LearnCpp PUBLIC util coroutine)
