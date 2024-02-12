@@ -19,9 +19,10 @@ TEST_CASE("Factorials are computed", "[factorial]")
 TEST_CASE("Test Return String", "[factorial]")
 {
     std::string str{"123"};
-    fmt(str);
-    fmt("234");
-    // fmt(123);
-    // REQUIRE(fmt(str) == str);
-    // REQUIRE(fmt(234) == "234");
+    // fmt(str);
+    // fmt("234");
+    REQUIRE(fmt(str) == str);
+    REQUIRE(fmt("234") == "234");
+    REQUIRE(fmt("{}", "234") == "234");
+    REQUIRE(fmt("Testing: {}", "234") == "Testing: 234");
 }
