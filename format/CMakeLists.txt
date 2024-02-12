@@ -32,4 +32,4 @@ add_executable(unit_tests
 	test/main.cpp
 )
 
-target_link_libraries(unit_tests PUBLIC Catch2::Catch2WithMain)
+target_link_libraries(unit_tests PUBLIC format Catch2::Catch2WithMain)
