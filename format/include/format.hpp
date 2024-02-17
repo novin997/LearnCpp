@@ -46,6 +46,18 @@ std::string fmt(S output, T val)
     return fmt(s);
 };
 
+template <typename S, typename = std::enable_if_t<is_string<S>::value>, typename T, typename = std::enable_if_t<is_string<T>::value>, typename... U>
+std::string fmt(S output, T val, U... others)
+{
+    std::string s(output);
+    std::size_t pos = s.find("{}");
+    if (pos != std::string::npos)
+    {
+        s.replace(pos, 2, val);
+    };
+    return fmt(s, others...);
+};
+
 // template <typename T, typename = std::enable_if_t<std::is_integral<T>::value>>
 // inline void fmt(T output)
 // {

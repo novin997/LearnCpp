@@ -19,10 +19,30 @@ TEST_CASE("Factorials are computed", "[factorial]")
 TEST_CASE("Test Return String", "[factorial]")
 {
     std::string str{"123"};
-    // fmt(str);
-    // fmt("234");
+
+    /*
+     *   Test without string replacement
+     */
     REQUIRE(fmt(str) == str);
     REQUIRE(fmt("234") == "234");
+    /*
+     *   Test with 1 replacement string
+     */
     REQUIRE(fmt("{}", "234") == "234");
     REQUIRE(fmt("Testing: {}", "234") == "Testing: 234");
+    /*
+     *   Test with 2 replacement string
+     */
+    REQUIRE(fmt("Testing: {} {}", "123", "234") == "Testing: 123 234");
+
+    /*
+     *   Test with 3 replacement string
+     */
+    REQUIRE(fmt("Testing: {} {} {}", "123", "234", "345") == "Testing: 123 234 345");
+
+    // Extra parameter will be ignored
+    REQUIRE(fmt("{}", "234", "453") == "234");
+
+    // Extra {} means {} will not be replaced
+    REQUIRE(fmt("{} {}", "234") == "234 {}");
 }
